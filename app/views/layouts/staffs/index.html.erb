@@ -1,0 +1,25 @@
+<h1>スタッフ一覧</h1>
+
+<table>
+  <tr>
+    <th>名前</th>
+    <th>役職</th>
+    <th>店舗</th>
+    <th>勤務時間</th>
+    <th>アクション</th>
+  </tr>
+  <% @staffs.each do |staff| %>
+    <tr>
+      <td><%= link_to staff.name, staff %></td>
+      <td><%= staff.role %></td>
+      <td><%= staff.store %></td>
+      <td><%= staff.work_hours %></td>
+      <td>
+        <%= link_to "編集", edit_staff_path(staff) %> |
+        <%= link_to "削除", staff, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "新しいスタッフを追加", new_staff_path %>
